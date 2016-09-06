@@ -37,11 +37,18 @@ window.onload = function ()
 	{
 	var oDate = new Date();
 	var str = toDouble(oDate.getHours())+toDouble(oDate.getMinutes())+toDouble(oDate.getSeconds());
+		
+		if (str=="000000") //0点不刷新更新日期
+		{
+			date();
+			weekday();
+		}
 
 		for (var i = 0; i < aImgTick.length; i++) 
 		{
 		aImgTick[i].src='images/'+str.charAt(i)+'.png'; //str[i]这种写法不兼容低版本浏览器
 		}
+
 	}
 	date();
 	weekday();
