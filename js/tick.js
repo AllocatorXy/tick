@@ -8,19 +8,43 @@ function toDouble(n) {
 		return ''+n; 
 	}
 }
+window.onload = function () 
+{
 
-window.onload = function () {
-	var aImg = document.getElementsByClassName('t');
+	var aImgTick = document.getElementsByClassName('t');
+	var aImgDate = document.getElementsByClassName('dt');
+	var aImgDay = document.getElementsByClassName('today');
+
+	function date() 
+	{
+		var oDate = new Date();
+		var str = toDouble(oDate.getFullYear())+toDouble((oDate.getMonth()+1))+toDouble(oDate.getDate());
+
+		for (var i = 0; i < aImgDate.length; i++) 
+		{
+			aImgDate[i].src='images/'+str.charAt(i)+'.png';
+		}
+	}
+
+	function weekday() {
+		var oDate = new Date();
+		var str = oDate.getDay().toString();
+		
+		aImgDay.src = 'images/'+str+'.png';
+	}
+
 	function tick() 
 	{
 	var oDate = new Date();
 	var str = toDouble(oDate.getHours())+toDouble(oDate.getMinutes())+toDouble(oDate.getSeconds());
 
-		for (var i = 0; i < aImg.length; i++) 
+		for (var i = 0; i < aImgTick.length; i++) 
 		{
-		aImg[i].src='images/'+str.charAt(i)+'.jpg'; //str[i]这种写法不兼容低版本浏览器
+		aImgTick[i].src='images/'+str.charAt(i)+'.png'; //str[i]这种写法不兼容低版本浏览器
 		}
 	}
+	date();
+	weekday();
 	tick(); //一开始先运行一遍，避免刷新时一秒延迟回归初始值
 	setInterval(tick, 1000);
 };
