@@ -29,8 +29,8 @@ window.onload = function ()
 	function weekday() {
 		var oDate = new Date();
 		var str = oDate.getDay().toString();
-		
-		aImgDay.src = 'images/'+str+'.png';
+		// alert(typeof(str));
+		aImgDay[0].src = 'images/weekdays/'+str+'.png';
 	}
 
 	function tick() 
